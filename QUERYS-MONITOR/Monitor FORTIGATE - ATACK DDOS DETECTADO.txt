@@ -1,0 +1,59 @@
+{
+  "size": 10,
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "range": {
+            "@timestamp": {
+              "gte": "now-2m",
+              "lte": "now",
+              "format": "strict_date_optional_time"
+            }
+          }
+        },
+        {
+          "exists": { "field": "data.srcip" }
+        },
+        {
+          "exists": { "field": "data.dstip" }
+        },
+        {
+          "exists": { "field": "data.dstcountry" }
+        },
+        {
+          "exists": { "field": "data.proto" }
+        },
+        {
+          "exists": { "field": "data.dstintf" }
+        },
+        {
+          "term": {
+            "data.action": "pass"
+          }
+        },
+        {
+          "bool": {
+            "should": [
+              { "term": { "data.service": "SSH" } },
+              { "term": { "data.app": "SSH" } }
+            ],
+            "minimum_should_match": 1
+          }
+        },
+        {
+          "term": {
+            "data.dstport": 22
+          }
+        }
+      ]
+    }
+  },
+  "sort": [
+    {
+      "@timestamp": {
+        "order": "desc"
+      }
+    }
+  ]
+}

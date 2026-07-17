@@ -1,0 +1,51 @@
+#AD - Atividade Suspeita Detectada
+#EXTRACTION QUERY EDITOR
+#RUN EVERY - 3 MINUTO
+#AD
+{
+    "size": 1,
+    "query": {
+        "bool": {
+            "must": [
+                {
+                    "term": {
+                        "data.win.system.eventID": {
+                            "value": "5136",
+                            "boost": 1
+                        }
+                    }
+                },
+                {
+                    "term": {
+                        "data.win.eventdata.attributeLDAPDisplayName": {
+                            "value": "servicePrincipalName",
+                            "boost": 1
+                        }
+                    }
+                }
+            ],
+            "filter": [
+                {
+                    "range": {
+                        "@timestamp": {
+                            "from": "now-5m",
+                            "to": "now",
+                            "include_lower": true,
+                            "include_upper": true,
+                            "boost": 1
+                        }
+                    }
+                }
+            ],
+            "adjust_pure_negative": true,
+            "boost": 1
+        }
+    },
+    "sort": [
+        {
+            "@timestamp": {
+                "order": "desc"
+            }
+        }
+    ]
+}

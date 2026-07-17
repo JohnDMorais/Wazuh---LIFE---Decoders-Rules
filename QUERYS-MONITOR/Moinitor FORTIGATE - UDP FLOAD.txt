@@ -1,0 +1,43 @@
+#UDP FLOAD
+#EXTRACTION QUERY EDITOR
+#RUN EVERY - 3 MINUTO
+#FORTIGATE
+
+{
+    "size": 1,
+    "query": {
+        "bool": {
+            "filter": [
+                {
+                    "range": {
+                        "@timestamp": {
+                            "from": "{{period_end}}||-2m",
+                            "to": "{{period_end}}",
+                            "include_lower": true,
+                            "include_upper": true,
+                            "format": "epoch_millis",
+                            "boost": 1
+                        }
+                    }
+                },
+                {
+                    "term": {
+                        "data.msg": {
+                            "value": "Remote.Access: RDP",
+                            "boost": 1
+                        }
+                    }
+                }
+            ],
+            "adjust_pure_negative": true,
+            "boost": 1
+        }
+    },
+    "sort": [
+        {
+            "@timestamp": {
+                "order": "desc"
+            }
+        }
+    ]
+}

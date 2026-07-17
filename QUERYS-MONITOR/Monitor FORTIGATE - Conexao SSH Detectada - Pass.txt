@@ -1,0 +1,183 @@
+#Monitor - Conexao SSH Detectada - Pass
+#EXTRACTION QUERY EDITOR
+#RUN EVERY - 1 MINUTO
+#FORTIGATE
+#com must de falsos positivos - (origem e destino)
+{
+    "size": 1,
+    "query": {
+        "bool": {
+            "filter": [
+                {
+                    "range": {
+                        "@timestamp": {
+                            "from": "{{period_end}}||-2m",
+                            "to": "{{period_end}}",
+                            "include_lower": true,
+                            "include_upper": true,
+                            "format": "epoch_millis",
+                            "boost": 1
+                        }
+                    }
+                },
+                {
+                    "exists": {
+                        "field": "data.srcip",
+                        "boost": 1
+                    }
+                },
+                {
+                    "exists": {
+                        "field": "data.dstip",
+                        "boost": 1
+                    }
+                },
+                {
+                    "exists": {
+                        "field": "data.dstcountry",
+                        "boost": 1
+                    }
+                },
+                {
+                    "exists": {
+                        "field": "data.proto",
+                        "boost": 1
+                    }
+                },
+                {
+                    "term": {
+                        "data.action": {
+                            "value": "pass",
+                            "boost": 1
+                        }
+                    }
+                },
+                {
+                    "bool": {
+                        "should": [
+                            {
+                                "term": {
+                                    "data.service": {
+                                        "value": "SSH",
+                                        "boost": 1
+                                    }
+                                }
+                            },
+                            {
+                                "term": {
+                                    "data.app": {
+                                        "value": "SSH",
+                                        "boost": 1
+                                    }
+                                }
+                            }
+                        ],
+                        "adjust_pure_negative": true,
+                        "minimum_should_match": "1",
+                        "boost": 1
+                    }
+                },
+                {
+                    "term": {
+                        "data.dstport": {
+                            "value": 22,
+                            "boost": 1
+                        }
+                    }
+                }
+            ],
+            "must_not": [
+                {
+                    "bool": {
+                        "should": [
+                            {
+                                "bool": {
+                                    "must": [
+                                        {
+                                            "term": {
+                                                "data.srcip": {
+                                                    "value": "XXX.XXX.XXX.XXX",
+                                                    "boost": 1
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "term": {
+                                                "data.dstip": {
+                                                    "value": "XXX.XXX.XXX.XXX",
+                                                    "boost": 1
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "adjust_pure_negative": true,
+                                    "boost": 1
+                                }
+                            },
+                            {
+                                "bool": {
+                                    "must": [
+                                        {
+                                            "term": {
+                                                "data.srcip": {
+                                                    "value": "XXX.XXX.XXX.XXX",
+                                                    "boost": 1
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "term": {
+                                                "data.dstip": {
+                                                    "value": "XXX.XXX.XXX.XXX",
+                                                    "boost": 1
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "adjust_pure_negative": true,
+                                    "boost": 1
+                                }
+                            },
+                            {
+                                "bool": {
+                                    "must": [
+                                        {
+                                            "term": {
+                                                "data.srcip": {
+                                                    "value": "XXX.XXX.XXX.XXX",
+                                                    "boost": 1
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "term": {
+                                                "data.dstip": {
+                                                    "value": "XXX.XXX.XXX.XXX",
+                                                    "boost": 1
+                                                }
+                                            }
+                                        }
+                                    ],
+                                    "adjust_pure_negative": true,
+                                    "boost": 1
+                                }
+                            }
+                        ],
+                        "adjust_pure_negative": true,
+                        "minimum_should_match": "1",
+                        "boost": 1
+                    }
+                }
+            ],
+            "adjust_pure_negative": true,
+            "boost": 1
+        }
+    },
+    "sort": [
+        {
+            "@timestamp": {
+                "order": "desc"
+            }
+        }
+    ]
+}

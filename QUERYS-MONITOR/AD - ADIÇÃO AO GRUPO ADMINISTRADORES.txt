@@ -1,0 +1,51 @@
+#AD - ADIÇÃO AO GRUPO ADMINISTRADORES
+#EXTRACTION QUERY EDITOR
+#RUN EVERY - 3 MINUTO
+#AD
+{
+    "size": 5,
+    "query": {
+        "bool": {
+            "must": [
+                {
+                    "term": {
+                        "data.win.system.eventID": {
+                            "value": "4732",
+                            "boost": 1
+                        }
+                    }
+                },
+                {
+                    "term": {
+                        "data.win.eventdata.targetSid": {
+                            "value": "S-1-5-32-544",
+                            "boost": 1
+                        }
+                    }
+                }
+            ],
+            "filter": [
+                {
+                    "range": {
+                        "@timestamp": {
+                            "from": "now-5m",
+                            "to": "now",
+                            "include_lower": true,
+                            "include_upper": true,
+                            "boost": 1
+                        }
+                    }
+                }
+            ],
+            "adjust_pure_negative": true,
+            "boost": 1
+        }
+    },
+    "sort": [
+        {
+            "@timestamp": {
+                "order": "desc"
+            }
+        }
+    ]
+}

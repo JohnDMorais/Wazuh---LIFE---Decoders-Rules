@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{{ $json.body.payload.verdict_label }}</title>
+</head>
+<body style="margin:0;padding:0;background:#F3F4F6;font-family:'Segoe UI',Arial,Helvetica,sans-serif;">
+<table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#F3F4F6" style="background:#F3F4F6;">
+<tr><td align="center" style="padding:24px 12px;">
+
+  <table role="presentation" width="600" border="0" cellspacing="0" cellpadding="0" style="max-width:600px;width:100%;background:#FFFFFF;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(13,12,85,0.10);">
+<!-- ===== LOGO ===== -->
+<tr>
+  <td align="center" style="padding:24px 24px 16px;background:#FFFFFF;">
+    <img src="data:image/png;base64,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"
+         alt="Logo"
+         style="max-height:45px;display:block;margin:0 auto;">
+  </td>
+</tr>
+    
+	<!-- ===== BANNER DO VEREDITO ===== -->
+    <tr><td bgcolor="{{ $json.body.payload.verdict_color }}" align="center" style="background:{{ $json.body.payload.verdict_color }};padding:28px 24px;color:#FFFFFF;">
+      <div style="font-size:42px;line-height:1;margin-bottom:8px;">{{ $json.body.payload.verdict_icon }}</div>
+      <div style="font-size:22px;font-weight:800;letter-spacing:0.02em;color:#FFFFFF;">{{ $json.body.payload.verdict_label }}</div>
+      <div style="font-size:13px;opacity:0.95;margin-top:6px;color:#FFFFFF;">{{ $json.body.payload.verdict_subtitle }}</div>
+    </td></tr>
+
+    <!-- ===== SAUDACAO + CHAMADA PRINCIPAL ===== -->
+    <tr><td style="padding:26px 28px 8px;">
+      <p style="font-size:14px;line-height:1.55;color:#374151;margin:0 0 12px;">Olá,</p>
+      <p style="font-size:14px;line-height:1.55;color:#374151;margin:0 0 18px;">
+        A equipe de <strong style="color:#0D0C55;">Segurança da Informação</strong> concluiu a análise do e-mail reportado por você (ou que tinha você como destinatário).
+      </p>
+      <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr><td bgcolor="{{ $json.body.payload.verdict_color }}" style="background:{{ $json.body.payload.verdict_color }};border-radius:6px 0 0 6px;width:4px;line-height:0;font-size:0;">&nbsp;</td>
+        <td style="background:#F9FAFB;padding:14px 16px;border-radius:0 6px 6px 0;">
+          <p style="font-size:14px;line-height:1.55;color:{{ $json.body.payload.verdict_color_dark }};margin:0;font-weight:600;">
+            {{ $json.body.payload.verdict_cta }}
+          </p>
+        </td></tr>
+      </table>
+    </td></tr>
+
+    <!-- ===== DETALHES DO E-MAIL ANALISADO ===== -->
+    <tr><td style="padding:22px 28px 4px;">
+      <h3 style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#6B7280;margin:0 0 10px;">Detalhes do e-mail analisado</h3>
+      <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="font-size:13px;color:#1F2937;border-collapse:collapse;">
+        <tr>
+          <td style="padding:8px 12px;color:#6B7280;width:130px;vertical-align:top;background:#F9FAFB;border:1px solid #E5E7EB;">Protocolo</td>
+          <td style="padding:8px 12px;font-family:'Courier New',monospace;font-weight:600;color:#0D0C55;border:1px solid #E5E7EB;">#{{ $json.body.payload.protocolo }}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 12px;color:#6B7280;vertical-align:top;background:#F9FAFB;border:1px solid #E5E7EB;">Assunto</td>
+          <td style="padding:8px 12px;color:#1F2937;border:1px solid #E5E7EB;word-break:break-word;">{{ $json.body.payload.subject }}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 12px;color:#6B7280;vertical-align:top;background:#F9FAFB;border:1px solid #E5E7EB;">Remetente</td>
+          <td style="padding:8px 12px;color:#1F2937;border:1px solid #E5E7EB;word-break:break-all;font-family:'Courier New',monospace;font-size:12px;">{{ $json.body.payload.sender_email }}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 12px;color:#6B7280;vertical-align:top;background:#F9FAFB;border:1px solid #E5E7EB;">Prioridade</td>
+          <td style="padding:8px 12px;color:#1F2937;border:1px solid #E5E7EB;text-transform:uppercase;font-weight:600;font-size:12px;">{{ $json.body.payload.priority }}</td>
+        </tr>
+        <tr>
+          <td style="padding:8px 12px;color:#6B7280;vertical-align:top;background:#F9FAFB;border:1px solid #E5E7EB;">Analisado em</td>
+          <td style="padding:8px 12px;color:#1F2937;border:1px solid #E5E7EB;">{{ DateTime.fromISO($json.body.payload.analyzed_at).setZone('America/Sao_Paulo').toFormat('dd/MM/yyyy HH:mm') }}</td>
+        </tr>
+      </table>
+    </td></tr>
+
+    <!-- ===== NOTA DO ANALISTA (so' se tiver) ===== -->
+    <tr><td style="padding:18px 28px 4px;">
+      <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="{{ ($json.body.payload.analyst.note || '').trim() === '' ? 'display:none;' : '' }}">
+        <tr><td>
+          <h3 style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#6B7280;margin:0 0 10px;">Observação do analista</h3>
+          <div style="background:#EFF6FF;border:1px solid #DBEAFE;border-radius:6px;padding:14px 16px;font-size:13px;line-height:1.55;color:#1E40AF;white-space:pre-wrap;">{{ $json.body.payload.analyst.note }}</div>
+        </td></tr>
+      </table>
+    </td></tr>
+
+    <!-- ===== O QUE FAZER AGORA — adapta por veredito ===== -->
+    <tr><td style="padding:22px 28px 4px;">
+      <h3 style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#6B7280;margin:0 0 10px;">Próximos passos</h3>
+
+      <!-- Bloco PHISHING -->
+      <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="{{ $json.body.payload.verdict === 'phishing confirmado' ? '' : 'display:none;' }}">
+        <tr><td style="background:#FEF2F2;border:1px solid #FECACA;border-radius:6px;padding:14px 16px;">
+          <ul style="margin:0;padding-left:20px;font-size:13px;line-height:1.7;color:#991B1B;">
+            <li><strong>NÃO clique</strong> em nenhum link ou botão do e-mail.</li>
+            <li><strong>NÃO baixe</strong> nem abra anexos.</li>
+            <li><strong>NÃO responda</strong> e nem encaminhe — exceto para a equipe de SegInfo, se solicitado.</li>
+            <li><strong>Apague o e-mail</strong> da sua caixa de entrada e lixeira.</li>
+            <li>Se já clicou em algum link ou informou credenciais, <strong>troque imediatamente sua senha</strong> e acione o suporte de TI.</li>
+            <li>Reporte qualquer e-mail suspeito que receber daqui pra frente pelo botão de Phishing Report.</li>
+          </ul>
+        </td></tr>
+      </table>
+
+      <!-- Bloco LIMPO -->
+      <table role="presentation" width="100%" border="0" cellspacing="0" cellpadding="0" style="{{ $json.body.payload.verdict === 'limpo' ? '' : 'display:none;' }}">
+        <tr><td style="background:#ECFDF5;border:1px solid #A7F3D0;border-radius:6px;padding:14px 16px;">
+          <ul style="margin:0;padding-left:20px;font-size:13px;line-height:1.7;color:#065F46;">
+            <li>Nenhum indício de phishing foi identificado na análise.</li>
+            <li>Você pode <strong>interagir com o e-mail normalmente</strong>: ler, responder e seguir as instruções, se aplicável.</li>
+            <li>Mesmo assim, mantenha-se atento: se algo parecer estranho no futuro, reporte pelo botão de Phishing Report.</li>
+            <li>Sua atitude de reportar foi correta — agradecemos por contribuir com a segurança da Alvoar.</li>
+          </ul>
+        </td></tr>
+      </table>
+    </td></tr>
+
+    <!-- ===== RODAPE ===== -->
+    <tr><td style="padding:24px 28px 28px;">
+      <hr style="border:0;border-top:1px solid #E5E7EB;margin:0 0 16px;">
+      <p style="font-size:11px;line-height:1.6;color:#9CA3AF;margin:0 0 6px;text-align:center;">
+        Esta é uma mensagem automática enviada pela equipe de Segurança da Informação · Alvoar Lácteos.
+      </p>
+      <p style="font-size:11px;line-height:1.6;color:#9CA3AF;margin:0;text-align:center;">
+        Em caso de dúvida, responda a este e-mail ou contate o time SegInfo · Protocolo #{{ $json.body.payload.protocolo }}
+      </p>
+    </td></tr>
+
+  </table>
+
+</td></tr>
+</table>
+</body>
+</html>

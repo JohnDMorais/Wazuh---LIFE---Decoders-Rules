@@ -1,0 +1,145 @@
+#Monitor - BRUTERFORCE Detectado
+#EXTRACTION QUERY EDITOR
+#RUN EVERY - 5 MINUTO
+#FORTIGATE
+{
+    "size": 10,
+    "query": {
+        "bool": {
+            "filter": [
+                {
+                    "range": {
+                        "@timestamp": {
+                            "from": "{{period_end}}||-10m",
+                            "to": "{{period_end}}",
+                            "include_lower": true,
+                            "include_upper": true,
+                            "format": "epoch_millis",
+                            "boost": 1
+                        }
+                    }
+                },
+                {
+                    "term": {
+                        "rule.id": {
+                            "value": "81606",
+                            "boost": 1
+                        }
+                    }
+                },
+                {
+                    "term": {
+                        "data.status": {
+                            "value": "failed",
+                            "boost": 1
+                        }
+                    }
+                }
+            ],
+            "adjust_pure_negative": true,
+            "boost": 1
+        }
+    },
+    "aggregations": {
+        "source_attackers": {
+            "terms": {
+                "field": "data.srcip",
+                "size": 3,
+                "min_doc_count": 5,
+                "shard_min_doc_count": 0,
+                "show_term_doc_count_error": false,
+                "order": [
+                    {
+                        "_count": "desc"
+                    },
+                    {
+                        "_key": "asc"
+                    }
+                ]
+            },
+            "aggregations": {
+                "target_users": {
+                    "terms": {
+                        "field": "data.dstuser.keyword",
+                        "size": 5,
+                        "min_doc_count": 1,
+                        "shard_min_doc_count": 0,
+                        "show_term_doc_count_error": false,
+                        "order": [
+                            {
+                                "_count": "desc"
+                            },
+                            {
+                                "_key": "asc"
+                            }
+                        ]
+                    }
+                },
+                "countries": {
+                    "terms": {
+                        "field": "GeoLocation.country_name.keyword",
+                        "size": 1,
+                        "min_doc_count": 1,
+                        "shard_min_doc_count": 0,
+                        "show_term_doc_count_error": false,
+                        "order": [
+                            {
+                                "_count": "desc"
+                            },
+                            {
+                                "_key": "asc"
+                            }
+                        ]
+                    }
+                },
+                "devices": {
+                    "terms": {
+                        "field": "data.devname.keyword",
+                        "size": 1,
+                        "min_doc_count": 1,
+                        "shard_min_doc_count": 0,
+                        "show_term_doc_count_error": false,
+                        "order": [
+                            {
+                                "_count": "desc"
+                            },
+                            {
+                                "_key": "asc"
+                            }
+                        ]
+                    }
+                },
+                "latest_attempt": {
+                    "top_hits": {
+                        "from": 0,
+                        "size": 1,
+                        "version": false,
+                        "seq_no_primary_term": false,
+                        "explain": false,
+                        "_source": {
+                            "includes": [
+                                "@timestamp",
+                                "data.srcip",
+                                "data.dstip",
+                                "data.dstuser",
+                                "data.ui",
+                                "data.reason",
+                                "data.devname",
+                                "GeoLocation.country_name",
+                                "full_log"
+                            ],
+                            "excludes": []
+                        },
+                        "sort": [
+                            {
+                                "@timestamp": {
+                                    "order": "desc"
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+}

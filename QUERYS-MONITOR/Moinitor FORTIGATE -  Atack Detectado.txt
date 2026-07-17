@@ -1,0 +1,82 @@
+#Monitor - Atack Detectado
+#EXTRACTION QUERY EDITOR
+#RUN EVERY - 1 MINUTO
+#FORTIGATE
+{
+    "size": 10,
+    "query": {
+        "bool": {
+            "filter": [
+                {
+                    "range": {
+                        "@timestamp": {
+                            "from": "{{period_end}}||-1m",
+                            "to": "{{period_end}}",
+                            "include_lower": true,
+                            "include_upper": true,
+                            "format": "epoch_millis",
+                            "boost": 1
+                        }
+                    }
+                },
+                {
+                    "term": {
+                        "decoder.name": {
+                            "value": "fortigate-firewall-v5",
+                            "boost": 1
+                        }
+                    }
+                },
+                {
+                    "term": {
+                        "rule.description": {
+                            "value": "Fortigate attack dropped.",
+                            "boost": 1
+                        }
+                    }
+                }
+            ],
+            "must_not": [
+                {
+                    "terms": {
+                        "data.attack": [
+                            "TCP.Split.Handshake",
+                            "SSL.Anonymous.Ciphers.Negotiation"
+                        ],
+                        "boost": 1
+                    }
+                }
+            ],
+            "adjust_pure_negative": true,
+            "boost": 1
+        }
+    },
+    "_source": {
+        "includes": [
+            "data.devid",
+            "data.devname",
+            "data.srcip",
+            "data.dstip",
+            "data.dstport",
+            "data.srcport",
+            "data.hostname",
+            "data.url",
+            "data.attack",
+            "data.severity",
+            "data.srccountry",
+            "data.dstcountry",
+            "rule.level",
+            "rule.description",
+            "rule.groups",
+            "timestamp"
+        ],
+        "excludes": []
+    },
+    "sort": [
+        {
+            "@timestamp": {
+                "order": "desc"
+            }
+        }
+    ]
+}

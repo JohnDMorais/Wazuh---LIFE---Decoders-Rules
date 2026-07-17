@@ -1,0 +1,107 @@
+#Office_365-Phishi - Bloqueados
+#EXTRACTION QUERY EDITOR
+#RUN EVERY - 10 MINUTO
+#BLOCKED - CHANGER
+{
+    "size": 0,
+    "query": {
+        "bool": {
+            "must": [
+                {
+                    "term": {
+                        "rule.groups": {
+                            "value": "office365",
+                            "boost": 1
+                        }
+                    }
+                },
+                {
+                    "term": {
+                        "data.office365.Verdict": {
+                            "value": "Phish",
+                            "boost": 1
+                        }
+                    }
+                },
+                {
+                    "range": {
+                        "@timestamp": {
+                            "from": "now-10m",
+                            "to": null,
+                            "include_lower": true,
+                            "include_upper": true,
+                            "boost": 1
+                        }
+                    }
+                }
+            ],
+            "must_not": [
+                {
+                    "term": {
+                        "data.office365.DeliveryAction": {
+                            "value": "Blocked",
+                            "boost": 1
+                        }
+                    }
+                }
+            ],
+            "adjust_pure_negative": true,
+            "boost": 1
+        }
+    },
+    "aggregations": {
+        "por_assunto": {
+            "terms": {
+                "field": "data.office365.Subject",
+                "size": 50,
+                "min_doc_count": 3,
+                "shard_min_doc_count": 0,
+                "show_term_doc_count_error": false,
+                "order": [
+                    {
+                        "_count": "desc"
+                    },
+                    {
+                        "_key": "asc"
+                    }
+                ]
+            },
+            "aggregations": {
+                "remetentes_usados": {
+                    "terms": {
+                        "field": "data.office365.P2Sender",
+                        "size": 200,
+                        "min_doc_count": 1,
+                        "shard_min_doc_count": 0,
+                        "show_term_doc_count_error": false,
+                        "order": [
+                            {
+                                "_count": "desc"
+                            },
+                            {
+                                "_key": "asc"
+                            }
+                        ]
+                    }
+                },
+                "destinatarios_unicos": {
+                    "cardinality": {
+                        "field": "data.office365.Recipients"
+                    }
+                },
+                "filtrar_destinatarios_minimos": {
+                    "bucket_selector": {
+                        "buckets_path": {
+                            "dest": "destinatarios_unicos"
+                        },
+                        "script": {
+                            "source": "params.dest >= 10",
+                            "lang": "painless"
+                        },
+                        "gap_policy": "skip"
+                    }
+                }
+            }
+        }
+    }
+}
