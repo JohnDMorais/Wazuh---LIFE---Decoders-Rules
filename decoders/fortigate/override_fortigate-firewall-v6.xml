@@ -1,0 +1,12 @@
+  <!-- Override ONLY for logs with location 10.105.10.20 -->
+<decoder name="fortigate-firewall-v6">
+  <parent>fortigate-firewall-v6</parent>
+  <regex>devid="(\.*)"|devid=(\.*)\s|devid=(\.*)$</regex>
+  <order>devid</order>
+</decoder>
+
+<decoder name="fortigate-firewall-v6">
+  <parent>fortigate-firewall-v6</parent>
+  <regex>devname="(\.*)"|devname=(\.*)\s|devname=(\.*)$</regex>
+  <order>devname</order>
+</decoder>

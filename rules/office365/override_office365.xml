@@ -1,0 +1,18 @@
+<!-- SOBREPOSIÇÃO REGRAS OFFICE365 -->
+<group name="office365">
+    <rule id="191556" level="11">
+        <if_sid>91556</if_sid>
+        <field name="office365.DetectionMethod" type="osregex">^Impersonation brand$</field>
+        <description>Office 365: Evento reclassificado — Impersonation brand</description>
+        <options>no_full_log</options>
+        <group>office365,ThreatIntelligence</group>
+    </rule>
+    <rule id="191557" level="11">
+        <if_sid>91556</if_sid>
+        <field name="data.office365.DeliveryAction">Blocked</field>
+        <description>Office 365: Malware/Phishing/Url detectado mas BLOQUEADO</description>
+        <options>no_full_log</options>
+        <group>office365,ThreatIntelligence</group>
+    </rule>
+    
+</group>

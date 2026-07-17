@@ -1,0 +1,967 @@
+<!-- Decoder base -->
+<decoder name="admanagerplus_first">
+    <program_name>ADAuditPlus</program_name>
+</decoder>
+
+<!-- User -->
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">User '([^']+)'</regex>
+  <order>srcuser</order>
+</decoder>
+
+<!-- Rason -->
+<decoder name="admanager_child">
+    <parent>admanagerplus_first</parent>
+    <regex type="pcre2">Reason: '([^']+)'</regex>
+    <order>Veredito</order>
+</decoder>
+
+<!-- Origem -->
+<decoder name="admanager_child">
+    <parent>admanagerplus_first</parent>
+    <regex type="pcre2">in '([^']+)'</regex>
+    <order>srcip</order>
+</decoder>
+
+<!-- todos os decoders filhos com mesmo nome "admanager_child" e regex pcre2 -->
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">Category = \s*([^\]]+)</regex>
+  <order>Category</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">REPORT_PROFILE = \s*([^\]]+)</regex>
+  <order>REPORT_PROFILE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">TIME_GENERATED = \s*([^\]]+)</regex>
+  <order>TIME_GENERATED</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">RECORD_NUMBER = \s*([^\]]+)</regex>
+  <order>RECORD_NUMBER</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">EVENT_NUMBER = \s*([^\]]+)</regex>
+  <order>EVENT_NUMBER</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">EVENT_TYPE = \s*([^\]]+)</regex>
+  <order>EVENT_TYPE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">EVENT_TYPE_TEXT = \s*([^\]]+)</regex>
+  <order>EVENT_TYPE_TEXT</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">SOURCE = \s*([^\]]+)</regex>
+  <order>SOURCE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">AUTHENTICATION_PACKAGE_NAME = \s*([^\]]+)</regex>
+  <order>AUTHENTICATION_PACKAGE_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">LOGON_PROCESS_NAME = \s*([^\]]+)</regex>
+  <order>LOGON_PROCESS_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ACCOUNT_NAME = \s*([^\]]+)</regex>
+  <order>ACCOUNT_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ACCOUNT_DOMAIN = \s*([^\]]+)</regex>
+  <order>ACCOUNT_DOMAIN</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ACCOUNT_SID = (?!null)([^\]]+)</regex>
+  <order>ACCOUNT_SID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">PRIMARY_LOGON_ID = \s*([^\]]+)</regex>
+  <order>PRIMARY_LOGON_ID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CALLER_USER_NAME = \s*([^\]]+)</regex>
+  <order>CALLER_USER_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CALLER_USER_DOMAIN = \s*([^\]]+)</regex>
+  <order>CALLER_USER_DOMAIN</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CALLER_LOGON_ID = \s*([^\]]+)</regex>
+  <order>CALLER_LOGON_ID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">NOTIFICATION_PACKAGE_NAME = \s*([^\]]+)</regex>
+  <order>NOTIFICATION_PACKAGE_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">PROCESS_ID = \s*([^\]]+)</regex>
+  <order>PROCESS_ID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">PROCESS_NAME = \s*([^\]]+)</regex>
+  <order>PROCESS_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">TOKEN_ELEVATION_TYPE = \s*([^\]]+)</regex>
+  <order>TOKEN_ELEVATION_TYPE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">PREVIOUS_TIME = \s*([^\]]+)</regex>
+  <order>PREVIOUS_TIME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">NEW_TIME = \s*([^\]]+)</regex>
+  <order>NEW_TIME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">USER_RIGHTS = \s*([^\]]+)</regex>
+  <order>USER_RIGHTS</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">USER_RIGHTS_VALUE = \s*([^\]]+)</regex>
+  <order>USER_RIGHTS_VALUE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">POLICY_CATEGORY = \s*([^\]]+)</regex>
+  <order>POLICY_CATEGORY</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">POLICY_SUB_CATEGORY = \s*([^\]]+)</regex>
+  <order>POLICY_SUB_CATEGORY</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">POLICY_CHANGES = \s*([^\]]+)</regex>
+  <order>POLICY_CHANGES</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">FILE_NAME = \s*([^\]]+)</regex>
+  <order>FILE_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">APPLICATION_NAME = \s*([^\]]+)</regex>
+  <order>APPLICATION_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">SCHEDULE_TIME = \s*([^\]]+)</regex>
+  <order>SCHEDULE_TIME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">SCHEDULE_AT = \s*([^\]]+)</regex>
+  <order>SCHEDULE_AT</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">FORMAT_MESSAGE = \s*([^\]]+)</regex>
+  <order>FORMAT_MESSAGE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">SAM_ACCOUNT_NAME = \s*([^\]]+)</regex>
+  <order>SAM_ACCOUNT_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">DISPLAY_NAME = \s*([^\]]+)</regex>
+  <order>DISPLAY_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">HOME_DIRECTORY = \s*([^\]]+)</regex>
+  <order>HOME_DIRECTORY</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">HOME_DRIVE = \s*([^\]]+)</regex>
+  <order>HOME_DRIVE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">SCRIPT_PATH = \s*([^\]]+)</regex>
+  <order>SCRIPT_PATH</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">PROFILE_PATH = \s*([^\]]+)</regex>
+  <order>PROFILE_PATH</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">PWD_LAST_SET = \s*([^\]]+)</regex>
+  <order>PWD_LAST_SET</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ACCOUNT_EXPIRY_DATE = \s*([^\]]+)</regex>
+  <order>ACCOUNT_EXPIRY_DATE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">PRIMARY_GROUP_ID = \s*([^\]]+)</regex>
+  <order>PRIMARY_GROUP_ID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">OLD_UAC_VALUE = \s*([^\]]+)</regex>
+  <order>OLD_UAC_VALUE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">NEW_UAC_VALUE = \s*([^\]]+)</regex>
+  <order>NEW_UAC_VALUE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">USER_ACCOUNT_CONTROL = \s*([^\]]+)</regex>
+  <order>USER_ACCOUNT_CONTROL</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">LOGON_HOURS = \s*([^\]]+)</regex>
+  <order>LOGON_HOURS</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">REMARKS = \s*([^\]]+)</regex>
+  <order>REMARKS</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">USER_PRINCIPAL_NAME = \s*([^\]]+)</regex>
+  <order>USER_PRINCIPAL_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CALLER_USER_SID = \s*([^\]]+)</regex>
+  <order>CALLER_USER_SID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">USER_MGMT_TYPE = \s*([^\]]+)</regex>
+  <order>USER_MGMT_TYPE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">LOGON_TO = \s*([^\]]+)</regex>
+  <order>LOGON_TO</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">MEMBER_NAME = \s*([^\]]+)</regex>
+  <order>MEMBER_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">MEMBER_SID = \s*([^\]]+)</regex>
+  <order>MEMBER_SID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">GROUP_TYPE = \s*([^\]]+)</regex>
+  <order>GROUP_TYPE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">GROUP_SCOPE = \s*([^\]]+)</regex>
+  <order>GROUP_SCOPE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CALLER_MACHINE_NAME = \s*([^\]]+)</regex>
+  <order>CALLER_MACHINE_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ACCOUNT_SAM_ACCOUNT_NAME = \s*([^\]]+)</regex>
+  <order>ACCOUNT_SAM_ACCOUNT_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ACCOUNT_DISPLAY_NAME = \s*([^\]]+)</regex>
+  <order>ACCOUNT_DISPLAY_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ACCOUNT_USER_PRINCIPAL_NAME = \s*([^\]]+)</regex>
+  <order>ACCOUNT_USER_PRINCIPAL_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ACCOUNT_USER_GUID = \s*([^\]]+)</regex>
+  <order>ACCOUNT_USER_GUID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ACCOUNT_DISTINGUISH_NAME = \s*([^\]]+)</regex>
+  <order>ACCOUNT_DISTINGUISH_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ACCOUNT_NAME_OU_GUID = \s*([^\]]+)</regex>
+  <order>ACCOUNT_NAME_OU_GUID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ACCOUNT_USER_DEPARTMENT = \s*([^\]]+)</regex>
+  <order>ACCOUNT_USER_DEPARTMENT</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ACCOUNT_USER_MANAGER_NAME = \s*([^\]]+)</regex>
+  <order>ACCOUNT_USER_MANAGER_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CALLER_SAM_ACCOUNT_NAME = \s*([^\]]+)</regex>
+  <order>CALLER_SAM_ACCOUNT_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CALLER_DISPLAY_NAME = \s*([^\]]+)</regex>
+  <order>CALLER_DISPLAY_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CALLER_USER_PRINCIPAL_NAME = \s*([^\]]+)</regex>
+  <order>CALLER_USER_PRINCIPAL_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CALLER_USER_GUID = \s*([^\]]+)</regex>
+  <order>CALLER_USER_GUID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CALLER_DISTINGUISH_NAME = \s*([^\]]+)</regex>
+  <order>CALLER_DISTINGUISH_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CALLER_USER_OU_GUID = \s*([^\]]+)</regex>
+  <order>CALLER_USER_OU_GUID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CALLER_USER_DEPARTMENT = \s*([^\]]+)</regex>
+  <order>CALLER_USER_DEPARTMENT</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CALLER_USER_MANAGER_NAME = \s*([^\]]+)</regex>
+  <order>CALLER_USER_MANAGER_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">MANDATORY_LABEL = \s*([^\]]+)</regex>
+  <order>MANDATORY_LABEL</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">PROCESS_COMMAND_LINE = \s*([^\]]+)</regex>
+  <order>PROCESS_COMMAND_LINE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">EXIT_STATUS = \s*([^\]]+)</regex>
+  <order>EXIT_STATUS</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">SOURCE_NAME = \s*([^\]]+)</regex>
+  <order>SOURCE_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">LOG_FILE_NAME = \s*([^\]]+)</regex>
+  <order>LOG_FILE_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">KEYWORDS_NAME = \s*([^\]]+)</regex>
+  <order>KEYWORDS_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">TASK_CATEGORY_NAME = \s*([^\]]+)</regex>
+  <order>TASK_CATEGORY_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">TASK_CATEGORY_ID = \s*([^\]]+)</regex>
+  <order>TASK_CATEGORY_ID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">EXTRA_COLUMN1 = \s*([^\]]+)</regex>
+  <order>EXTRA_COLUMN1</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">EXTRA_COLUMN2 = \s*([^\]]+)</regex>
+  <order>EXTRA_COLUMN2</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">EXTRA_COLUMN3 = \s*([^\]]+)</regex>
+  <order>EXTRA_COLUMN3</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">EXTRA_COLUMN4 = \s*([^\]]+)</regex>
+  <order>EXTRA_COLUMN4</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">EXTRA_COLUMN5 = \s*([^\]]+)</regex>
+  <order>EXTRA_COLUMN5</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">EXTRA_COLUMN6 = \s*([^\]]+)</regex>
+  <order>EXTRA_COLUMN6</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">EXTRA_COLUMN7 = \s*([^\]]+)</regex>
+  <order>EXTRA_COLUMN7</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">EXTRA_COLUMN8 = \s*([^\]]+)</regex>
+  <order>EXTRA_COLUMN8</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">EXTRA_COLUMN9 = \s*([^\]]+)</regex>
+  <order>EXTRA_COLUMN9</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">EXTRA_COLUMN10 = \s*([^\]]+)</regex>
+  <order>EXTRA_COLUMN10</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CONFIGURED_DOMAIN_NAME = \s*([^\]]+)</regex>
+  <order>CONFIGURED_DOMAIN_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CREATOR_PROCESS_ID = \s*([^\]]+)</regex>
+  <order>CREATOR_PROCESS_ID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CREATOR_PROCESS_NAME = \s*([^\]]+)</regex>
+  <order>CREATOR_PROCESS_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">SERVICE_NAME = \s*([^\]]+)</regex>
+  <order>SERVICE_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">SERVICE_FILE_NAME = \s*([^\]]+)</regex>
+  <order>SERVICE_FILE_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">SERVICE_TYPE = \s*([^\]]+)</regex>
+  <order>SERVICE_TYPE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">SERVICE_START_TYPE = \s*([^\]]+)</regex>
+  <order>SERVICE_START_TYPE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">SERVICE_ACCOUNT = \s*([^\]]+)</regex>
+  <order>SERVICE_ACCOUNT</order>
+</decoder>
+
+<!-- campos específicos do segundo evento -->
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">HANDLE_ID = \s*([^\]]+)</regex>
+  <order>HANDLE_ID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">OBJECT_NAME = \s*([^\]]+)</regex>
+  <order>OBJECT_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">UNC_NAME = \s*([^\]]+)</regex>
+  <order>UNC_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">FILE_LOCATION = \s*([^\]]+)</regex>
+  <order>FILE_LOCATION</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">LOGON_ID = \s*([^\]]+)</regex>
+  <order>LOGON_ID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">DOMAIN = \s*([^\]]+)</regex>
+  <order>DOMAIN</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ACCESSES = \s*([^\]]+)</regex>
+  <order>ACCESSES</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CLIENT_HOST_NAME = \s*([^\]]+)</regex>
+  <order>CLIENT_HOST_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CLIENT_IP_ADDRESS = \s*([^\]]+)</regex>
+  <order>CLIENT_IP_ADDRESS</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">TRANSACTION_ID = \s*([^\]]+)</regex>
+  <order>TRANSACTION_ID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ACCESS_MASK = \s*([^\]]+)</regex>
+  <order>ACCESS_MASK</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">USERNAME = \s*([^\]]+)</regex>
+  <order>USERNAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">USER_SID = \s*([^\]]+)</regex>
+  <order>USER_SID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ACCESS_TYPE = \s*([^\]]+)</regex>
+  <order>ACCESS_TYPE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ACCESS_TYPE_TEXT = \s*([^\]]+)</regex>
+  <order>ACCESS_TYPE_TEXT</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">USER_SAM_ACCOUNT_NAME = \s*([^\]]+)</regex>
+  <order>USER_SAM_ACCOUNT_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">USER_DISPLAY_NAME = \s*([^\]]+)</regex>
+  <order>USER_DISPLAY_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">USER_GUID = \s*([^\]]+)</regex>
+  <order>USER_GUID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">USER_DISTINGUISH_NAME = \s*([^\]]+)</regex>
+  <order>USER_DISTINGUISH_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">USER_OU_GUID = \s*([^\]]+)</regex>
+  <order>USER_OU_GUID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">USER_DEPARTMENT = \s*([^\]]+)</regex>
+  <order>USER_DEPARTMENT</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">USER_MANAGER_NAME = \s*([^\]]+)</regex>
+  <order>USER_MANAGER_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">FILE_TYPE = \s*([^\]]+)</regex>
+  <order>FILE_TYPE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">SHARE_NAME = \s*([^\]]+)</regex>
+  <order>SHARE_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">NEW_PRIVILEGES_USED = \s*([^\]]+)</regex>
+  <order>NEW_PRIVILEGES_USED</order>
+</decoder>
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">MANDATORY_LABEL_SID = \s*([^\]]+)</regex>
+  <order>MANDATORY_LABEL_SID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">MANDATORY_LABEL_TEXT = \s*([^\]]+)</regex>
+  <order>MANDATORY_LABEL_TEXT</order>
+</decoder>
+
+<!-- Object Fields -->
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">OBJECT_NAME = \s*([^\]]+)</regex>
+  <order>OBJECT_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">OBJECT_TYPE = \s*([^\]]+)</regex>
+  <order>OBJECT_TYPE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">OBJECT_SID = \s*([^\]]+)</regex>
+  <order>OBJECT_SID</order>
+</decoder>
+
+<!-- Access Fields -->
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ACCESS_LIST = \s*([^\]]+)</regex>
+  <order>ACCESS_LIST</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ACCESS_MASK = \s*([^\]]+)</regex>
+  <order>ACCESS_MASK</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ACCESS_REASON = \s*([^\]]+)</regex>
+  <order>ACCESS_REASON</order>
+</decoder>
+
+<!-- Network / Computer -->
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CALLER_COMPUTER_NAME = \s*([^\]]+)</regex>
+  <order>CALLER_COMPUTER_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">TARGET_COMPUTER_NAME = \s*([^\]]+)</regex>
+  <order>TARGET_COMPUTER_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">SOURCE_COMPUTER_NAME = \s*([^\]]+)</regex>
+  <order>SOURCE_COMPUTER_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">LOGON_TYPE = \s*([^\]]+)</regex>
+  <order>LOGON_TYPE</order>
+</decoder>
+
+<!-- Target User Fields -->
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">TARGET_USER_NAME = \s*([^\]]+)</regex>
+  <order>TARGET_USER_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">TARGET_USER_DOMAIN = \s*([^\]]+)</regex>
+  <order>TARGET_USER_DOMAIN</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">TARGET_USER_SID = \s*([^\]]+)</regex>
+  <order>TARGET_USER_SID</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">TARGET_USER_GUID = \s*([^\]]+)</regex>
+  <order>TARGET_USER_GUID</order>
+</decoder>
+
+<!-- Operation -->
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">OPERATION_TYPE = \s*([^\]]+)</regex>
+  <order>OPERATION_TYPE</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">OPERATION_STATUS = \s*([^\]]+)</regex>
+  <order>OPERATION_STATUS</order>
+</decoder>
+
+<!-- Task / Policy -->
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">TASK_CATEGORY = \s*([^\]]+)</regex>
+  <order>TASK_CATEGORY</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">AUDIT_POLICY_CATEGORY = \s*([^\]]+)</regex>
+  <order>AUDIT_POLICY_CATEGORY</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">AUDIT_POLICY_SUBCATEGORY = \s*([^\]]+)</regex>
+  <order>AUDIT_POLICY_SUBCATEGORY</order>
+</decoder>
+
+<!-- Group Change -->
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">GROUP_NAME = \s*([^\]]+)</regex>
+  <order>GROUP_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">GROUP_DOMAIN = \s*([^\]]+)</regex>
+  <order>GROUP_DOMAIN</order>
+</decoder>
+
+<!-- Object Change Tracking -->
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">ATTRIBUTES_MODIFIED = \s*([^\]]+)</regex>
+  <order>ATTRIBUTES_MODIFIED</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CHANGED_FROM = \s*([^\]]+)</regex>
+  <order>CHANGED_FROM</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">CHANGED_TO = \s*([^\]]+)</regex>
+  <order>CHANGED_TO</order>
+</decoder>
+
+<!-- DNS / Machine -->
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">DNS_HOST_NAME = \s*([^\]]+)</regex>
+  <order>DNS_HOST_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">MACHINE_SID = \s*([^\]]+)</regex>
+  <order>MACHINE_SID</order>
+</decoder>
+
+<!-- OU and Directory -->
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">DISTINGUISHED_NAME = \s*([^\]]+)</regex>
+  <order>DISTINGUISHED_NAME</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">OU_NAME = \s*([^\]]+)</regex>
+  <order>OU_NAME</order>
+</decoder>
+
+<!-- Misc -->
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">DESCRIPTION = \s*([^\]]+)</regex>
+  <order>DESCRIPTION</order>
+</decoder>
+
+<decoder name="admanager_child">
+  <parent>admanagerplus_first</parent>
+  <regex type="pcre2">COMMENTS = \s*([^\]]+)</regex>
+  <order>COMMENTS</order>
+</decoder>

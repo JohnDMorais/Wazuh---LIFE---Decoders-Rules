@@ -1,0 +1,26 @@
+<group name="windows,windows_security,custom_logoff">
+
+  <!-- PERMITE SOMENTE contas iniciadas com SRV ou SNE -->
+
+<rule id="100138" level="3">
+  <if_sid>60137</if_sid>
+  <field name="win.eventdata.targetUserName">^SRV</field>
+  <description>Windows User Logoff (contas SRV)</description>
+  <group>pci_dss_10.2.5,gdpr_IV_32.2,hipaa_164.312.b,nist_800_53_AU.14,nist_800_53_AC.7,tsc_CC6.8,tsc_CC7.2,tsc_CC7.3</group>
+</rule>
+
+<rule id="100137" level="3">
+  <if_sid>60137</if_sid>
+  <field name="win.eventdata.targetUserName">^SNE</field>
+  <description>Windows User Logoff (contas SNE)</description>
+  <options>no_full_log</options>
+  <group>pci_dss_10.2.5,gdpr_IV_32.2,hipaa_164.312.b,nist_800_53_AU.14,nist_800_53_AC.7,tsc_CC6.8,tsc_CC7.2,tsc_CC7.3</group>
+</rule>
+
+  <!-- DESCARTA todo o restante -->
+  <rule id="100139" level="0">
+    <if_sid>60137</if_sid>
+    <description>Ignore Windows User Logoff (geral)</description>
+  </rule>
+
+</group>

@@ -1,0 +1,8 @@
+<group name="admanagerplus,authentication,windows">
+    <rule id="600000" level="7">
+        <decoded_as>admanagerplus_first</decoded_as>
+        <match>FORMAT_MESSAGE</match>
+        <group>authentication_failed,pci_dss_10.2.4,pci_dss_10.2.5,gpg13_7.8,gdpr_IV_35.7.d,gdpr_IV_32.2,hipaa_164.312.b,nist_800_53_AU.14,nist_800_53_AC.7,tsc_CC6.1,tsc_CC6.8,tsc_CC7.2,tsc_CC7.3,</group>
+    <description>syslog: User authentication failure.</description>
+    </rule>
+</group>
