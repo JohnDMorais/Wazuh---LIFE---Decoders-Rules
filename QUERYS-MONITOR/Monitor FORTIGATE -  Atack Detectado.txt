@@ -1,7 +1,8 @@
 #Monitor - Atack Detectado
 #EXTRACTION QUERY EDITOR
-#RUN EVERY - 1 MINUTO
 #FORTIGATE
+#RUN EVERY - 1 MINUTO
+
 {
     "size": 10,
     "query": {
